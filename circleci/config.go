@@ -1,8 +1,6 @@
 package circleci
 
-import (
-	"github.com/jszwedko/go-circleci"
-)
+import circleci "github.com/jszwedko/go-circleci"
 
 type Config struct {
 	Token        string
