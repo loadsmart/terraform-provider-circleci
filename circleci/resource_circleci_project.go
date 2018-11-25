@@ -21,8 +21,9 @@ func resourceCircleciProject() *schema.Resource {
 				Required: true,
 			},
 			"env_vars": {
-				Type:     schema.TypeMap,
-				Optional: true,
+				Type:      schema.TypeMap,
+				Optional:  true,
+				Sensitive: true,
 			},
 		},
 	}
@@ -32,7 +33,7 @@ func resourceCircleciProjectCreate(d *schema.ResourceData, meta interface{}) err
 	client := meta.(*Organization).client
 	organization := meta.(*Organization).name
 	project := d.Get("name").(string)
-	env_vars := d.Get("env_vars").(map[string]interface{})
+	envVars := d.Get("env_vars").(map[string]interface{})
 
 	_, err := client.FollowProject(organization, project)
 	if err != nil {
@@ -41,7 +42,7 @@ func resourceCircleciProjectCreate(d *schema.ResourceData, meta interface{}) err
 
 	d.SetId(project)
 
-	for name, value := range env_vars {
+	for name, value := range envVars {
 		_, err := client.AddEnvVar(organization, project, name, value.(string))
 		if err != nil {
 			return err

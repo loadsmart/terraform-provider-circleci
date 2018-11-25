@@ -12,20 +12,19 @@ func Provider() terraform.ResourceProvider {
 			"token": &schema.Schema{
 				Type:        schema.TypeString,
 				Required:    true,
-				DefaultFunc: schema.EnvDefaultFunc("CIRCLECI_TOKEN", nil),
-				Description: "CircleCI API token.",
+				DefaultFunc: schema.EnvDefaultFunc("CIRCLE_TOKEN", nil),
+				Description: "CircleCI API token",
 			},
 			"organization": &schema.Schema{
 				Type:        schema.TypeString,
 				Required:    true,
-				DefaultFunc: schema.EnvDefaultFunc("CIRCLECI_ORGANIZATION", nil),
-				Description: "CircleCI organization name to manage.",
+				DefaultFunc: schema.EnvDefaultFunc("CIRCLE_USERNAME", nil),
+				Description: "CircleCI username/organization",
 			},
 		},
 
 		ResourcesMap: map[string]*schema.Resource{
 			"circleci_project": resourceCircleciProject(),
-			"circleci_envvar":  resourceCircleciEnvvar(),
 		},
 
 		DataSourcesMap: map[string]*schema.Resource{},
