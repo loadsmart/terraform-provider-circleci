@@ -18,7 +18,7 @@ func Provider() terraform.ResourceProvider {
 			"organization": &schema.Schema{
 				Type:        schema.TypeString,
 				Required:    true,
-				DefaultFunc: schema.EnvDefaultFunc("CIRCLE_USERNAME", nil),
+				DefaultFunc: schema.EnvDefaultFunc("CIRCLE_PROJECT_USERNAME", nil),
 				Description: "CircleCI username/organization",
 			},
 		},
