@@ -40,10 +40,10 @@ provider "circleci" {
 The following arguments are supported in the `provider` block:
 
 * `token` - (Optional) This is the CircleCI API token. It must be provided,
-  but it can also be sourced from the `CIRCLECI_TOKEN` environment variable.
+  but it can also be sourced from the `CIRCLE_TOKEN` environment variable.
 
 * `organization` - (Optional) This is the organization/account to be managed.
-  It must be provided, but it can also be sourced from the `CIRCLECI_ORGANIZATION`
+  It must be provided, but it can also be sourced from the `CIRCLE_PROJECT_USERNAME`
   environment variable.
 
 ## Data Sources
